@@ -19,6 +19,7 @@ const wrongInput = function(number){
     else { return 'Must be postive'}
 };
 
+/**This will make eahc new player and add a plus one to the html to get the right propities to from the CSS */
 dropdown.addEventListener('change', (event) => { 
   const value = +event.target.value;
   players.innerHTML = "";
@@ -45,6 +46,7 @@ dropdown.addEventListener('change', (event) => {
     
 });
 
+/**Button stuff but this time it will see it frim the javaside and not the HTML side */
 players.addEventListener('click', function(event){
 
   if(event.target.tagName !== 'BUTTON') return;
