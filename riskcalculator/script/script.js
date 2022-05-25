@@ -9,7 +9,7 @@ return 'With ' + number + ' territories' + ' You will get ' + (Math.floor(number
 
 };
 
-/*******Not a number************************/
+/*******Not a number***********************/
 const wrongInput = function(number){
   if (number === NaN){
   return 'Must be a number'}
