@@ -4,9 +4,7 @@
 	padding: 0;
 }
 body {
-	grid-template-columns: 1fr 1fr;
 	height: 100vh;
-	display: grid;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
@@ -22,7 +20,15 @@ background-color: rgb(241, 239, 239);
 h1 {
 	font-size: 1.5rem;
 }
+
 /*All player colors and stuff*/
+
+.allplayers{
+	background-color: rgb(210, 208, 208);
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 480px);
+}
+
 .player1{
 	padding: 10px;
 	margin: 20px;
@@ -52,15 +58,17 @@ h1 {
 	margin: 20px;
 	background-color: rgb(188, 82, 188);
 }
+
+.player6{
+	padding: 10px;
+	margin: 20px;
+	background-color: rgb(155, 155, 155);
+}
 /*************************/
 main {
 	margin: 0.5rem auto;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	padding: 0.5rem;
-
-	display: grid;
-	grid-template-columns: 1fr;
-	width: 95%;
 }
 
 input,

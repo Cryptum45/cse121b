@@ -1,6 +1,6 @@
 
-const buttons = document.querySelectorAll('button');
-
+const players = document.querySelector('.allplayers');
+const dropdown = document.querySelector('#dropdown')
 //**************Math for reinforcements********************/
 
 const reinforcements = function(number){
@@ -18,34 +18,58 @@ const wrongInput = function(number){
     }
     else { return 'Must be postive'}
 };
-/***************************************/
-buttons.forEach(function(button) {
 
-  button.addEventListener('click', function() {
-    const input = this.parentNode.querySelector('input')
-    let numberOF = input.value;
-    input.value = '';
-    const list = this.parentNode.nextElementSibling.querySelector('ul')
-    numberOF = wrongInput(+numberOF)
-
-    const numberOf2 = document.createElement('li');
-    const textList = document.createElement('span');
-    const deleteButton = document.createElement('button');
-  
-    list.appendChild(numberOf2);
-    numberOf2.appendChild(textList)
-    textList.textContent = numberOF;
+dropdown.addEventListener('change', (event) => { 
+  const value = +event.target.value;
+  players.innerHTML = "";
+  for (let i = 1; i <= value; i++){
+    const playerhtml = `<div class="player${i}">
+    <h1>Player${i}</h1>
     
-    
-    numberOf2.appendChild(deleteButton);
-    deleteButton.textContent = '❌';
-  
-    deleteButton.addEventListener('click', () => {
-      list.removeChild(numberOf2);
-    });
-  
-    input.focus();
-  });
+      <div class="input">
+        <label>How many territories?<br>
+          <input type="text" id="t1" placeholder="Number" required></label>
+        <button id="submitbutton" type="submit">Reinforce</button>
+      </div>
+      <div class="listcontainer">
+        <ul class="list" >
+        </ul>
+      </div>
+      <section>
+      </section>
+    </div>`;
 
+    players.insertAdjacentHTML('beforeend', playerhtml);
+
+  }
+    
 });
 
+players.addEventListener('click', function(event){
+
+  if(event.target.tagName !== 'BUTTON') return;
+  if (event.target.id === 'submitbutton') {
+    const input = event.target.parentNode.querySelector('input')
+      let numberOF = input.value;
+         input.value = '';
+         const list = event.target.parentNode.nextElementSibling.querySelector('ul')
+         numberOF = wrongInput(+numberOF)
+    
+         const numberOf2 = document.createElement('li');
+         const textList = document.createElement('span');
+         const deleteButton = document.createElement('button');
+      
+         list.appendChild(numberOf2);
+         numberOf2.appendChild(textList)
+         textList.textContent = numberOF;
+        
+        
+         numberOf2.appendChild(deleteButton);
+         deleteButton.textContent = '❌';
+    
+    
+  } else {
+    event.target.closest('li').remove();
+    
+  }
+});
